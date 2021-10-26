@@ -17,7 +17,22 @@ fn_ExtentGenerateReport()
 
 
 
+' OracleFormWindow("title:=Receipts.*").OracleButton("description:=Apply").Highlight
+'fn_Click OracleFormWindow("title:=Receipts.*").OracleButton("description:=Apply")	
 
+'label:=Apply
+'Set orcreciptApplication = OracleFormWindow("title:=Applications.*")
+'vtransactionNumber = "436050000075"
+'If orcreciptApplication.GetROProperty("title") =  "Applications - QA8000"  Then
+'	print " Able to navigaite to the Application"
+'	orcreciptApplication.OracleTable("block name:=Table").Highlight
+''	fn_EnterField orcreciptApplication.OracleTable("block name:=Table"),1,"Apply To",436050000075,"Apply To"
+'	orcreciptApplication.OracleTable("block name:=Table").EnterField 1,"Apply To","436050000075"
+'	
+'End If
+
+
+'Apply;Saved;Apply To;Installment;Apply Date;Amount Applied;Discount;Balance Due;Trans Currency;Customer Number;GL Date;Reversal GL Date;Allocated Receipt Amount;Cross Currency Rate;Exchange Gain/Loss;Activity;Application Reference Type;Application Reference Number;Application Reference Reason;Days Late;Line Number;Class;Type;[ ];( )
 
 '
 '
@@ -190,33 +205,6 @@ fn_ExtentGenerateReport()
 'End Function
 '
 '
-'************************************************************************************************
-'Function Name:- fnRandomNumber
-'Description:- Function to Create a Random Number of Any Length
-'Input Parameters:- LengthOfRandomNumber
-'Output Parameters:- 
-'Created By:- 	MMC team
-'************************************************************************************************
- Function fnRandomNumber(LengthOfRandomNumber)
-
-Dim sMaxVal : sMaxVal = ""
-Dim iLength : iLength = LengthOfRandomNumber
-
-'Find the maximum value for the given number of digits
-For iL = 1 to iLength
- sMaxVal = sMaxVal & "9"
-Next
- sMaxVal = Int(sMaxVal)
-
-'Find Random Value
-Randomize
- iTmp = Int((sMaxVal * Rnd) + 1)
-'Add Trailing Zeros if required
- iLen = Len(iTmp)
- fnRandomNumber = iTmp * (10 ^(iLength - iLen))
-
- End Function
-
 
 '	counter = 1
 '	Do
@@ -230,3 +218,71 @@ Randomize
 ''			fn_exist = false
 ''		End If
 '	Loop while counter<20
+
+
+'Set OracleFormFuncationsList = OracleFormWindow("title:=Navigator.*").OracleTabbedRegion("label:=Functions").OracleList("description:=Function List")
+'Set list = OracleFormFuncationsList.GetAllROProperties
+'print list(1)
+' print OracleFormWindow("title:=Navigator.*").OracleTabbedRegion("label:=Functions").OracleList("description:=Function List").ToString
+'Print OracleFormFuncationsList(1).toString
+'OracleFormFuncationsList.Select("+  Transactions")
+'OracleFormFuncationsList.Activate("+  Transactions")
+'OracleFormFuncationsList.Highlight
+'For i = 1 To 1 Step 1
+'	
+'	OracleFormFuncationsList.
+'Next
+'OracleFormFuncationsList.Activate(4)
+'Call fn_NavigatorOraclePage("Transactions","Transactions")
+'
+'Call fn_NavigateOraclePage("Transactions","transactions-->transaction")
+'Set OracleNavigatorForm = OracleFormWindow("title:=Navigator.*").OracleTabbedRegion("label:=Functions")
+
+
+
+
+'OracleFormWindow("title:=Navigator.*").OracleTabbedRegion("label:=Functions").OracleButton("description:=Collapse All").highlight
+'OracleFormWindow("title:=Navigator.*").OracleTabbedRegion("label:=Functions").OracleButton("description:=Collapse All").click
+'
+'OracleTabbedRegion("label:=Functions").
+
+'call fn_switchResponsibility("IDN AR Transaction Approver")
+
+
+'
+'Function fn_switchResponsibility(respName)
+'On error resume next
+'fn_switchResponsibility = false       
+'    If (fn_exist (OracleFormWindow("title:=Navigator.*"))) Then
+''        OracleFormWindow("title:=Navigator.*").SelectMenu "File->Switch Responsibility..." 	
+'        Call fn_SelectMenu(OracleFormWindow("title:=Navigator.*"),"SwitchResponsibility")
+'	If OracleListOfValues("title:=Responsibilities").Exist(5) Then
+'		OracleListOfValues("title:=Responsibilities").Select respName	 	      
+'         Else 
+'        	fnReportEvent "Fail", "Switch Responsibility","Fail to naivigate to Switch Responsibility",true        	
+'    	End If    
+'    End  if 	
+''    validate if responsibilty is selected correctly 
+'title =  OracleFormWindow("title:=Navigator.*").GetROProperty("title")
+'	If Instr(1,title,respName) > 1 Then
+'		fnReportEvent "Pass", "Navigator Page Status","Navigator Page is displaying and User is able to switch the Responsibility to "&respName,false
+'		fn_switchResponsibility = true
+'	else
+'		fnReportEvent "Fail", "Navigator Page Status","Navigator Page is not displaying or Responsibility is not present for that user "& respName ,true
+'	End If
+'        
+'        If Err.number <> 0 Then             
+'              fnReportEvent "Fail", "Navigator Page Status","Navigator Page is not displaying or Responsibility is not present for that user "& respName ,true
+'              fn_switchResponsibility = false             	
+'            Exit function
+'        End If
+'End function
+
+
+
+'msgbox OracleListOfValues("title:=Responsibilities").Select("IDN AR Transaction Approver11")
+
+'fn_switchResponsibility = fn_Navigator("Complete Transaction","")
+'print fn_switchResponsibility
+
+
