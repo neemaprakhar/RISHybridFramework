@@ -1,7 +1,3 @@
 ﻿<Properties>
-  <WatchEntry0 value="vAppliedAmount" />
-  <WatchEntry1 value="gb_TestDataDic.item(&quot;Receipt_Amount&quot;)" />
-  <WatchEntry2 value="If cint(vUnappliedAmount) =cint(ExpUnappliedTotalamount) Then" />
-  <WatchEntry3 value="vUnappliedAmount" />
-  <WatchEntry4 value="ExpUnappliedTotalamount" />
+  <WatchEntry0 value="sExcelPath" />
 </Properties>
