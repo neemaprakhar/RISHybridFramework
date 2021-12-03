@@ -1,3 +1,8 @@
 ﻿<Properties>
   <WatchEntry0 value="sExcelPath" />
+  <WatchEntry1 value="strpath = mid(Environment(&quot;TestDir&quot;),1,instrRev(Environment(&quot;TestDir&quot;),&quot;\&quot;)) &amp; &quot;EnvironmentVar\Enviornment.ini&quot;" />
+  <WatchEntry2 value="strpath" />
+  <WatchEntry3 value="environment.Value(&quot;Str_testcase&quot;)" />
+  <WatchEntry4 value="gb_TestDataDic(&quot;Run_Flag&quot;)" />
+  <WatchEntry5 value="vtcIdentifier" />
 </Properties>
